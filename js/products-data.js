@@ -45,7 +45,7 @@ const PRODUCTS = [
     category: "disposable",
     price: 2500,
     description: "5000 puffs of pure satisfaction. Available in 12 mouth-watering flavors.",
-    image: "https://images.unsplash.com/photo-1602143405920-3d732d3a6a3e?w=400&h=400&fit=crop",
+    image: "images/Image-1.png",
     badge: "Best Seller",
     featured: true
   },
@@ -55,7 +55,7 @@ const PRODUCTS = [
     category: "disposable",
     price: 1800,
     description: "Compact design with 3000 puffs. Smooth draw and rich flavor every time.",
-    image: "https://images.unsplash.com/photo-1616541008738-18fb0cc5306e?w=400&h=400&fit=crop",
+    image: "images/Image-2.png",
     featured: false
   },
   {
@@ -64,7 +64,7 @@ const PRODUCTS = [
     category: "disposable",
     price: 3200,
     description: "Premium disposable with adjustable airflow and 6000 puffs capacity.",
-    image: "https://images.unsplash.com/photo-1591293950835-4b3e4e3c9d6e?w=400&h=400&fit=crop",
+    image: "images/Image-3.png",
     badge: "New",
     featured: true
   },
@@ -74,7 +74,7 @@ const PRODUCTS = [
     category: "disposable",
     price: 1200,
     description: "Budget-friendly disposable vape. 1500 puffs of consistent flavor.",
-    image: "https://images.unsplash.com/photo-1561118 owners?w=400&h=400&fit=crop",
+    image: "images/Image-4.png",
     featured: false
   },
   {
@@ -83,7 +83,7 @@ const PRODUCTS = [
     category: "disposable",
     price: 3800,
     description: "Rechargeable disposable with smart LED screen. 8000 puffs of luxury.",
-    image: "https://images.unsplash.com/photo-1605559424843-9e4e0a7b4c1f?w=400&h=400&fit=crop",
+    image: "images/Image-5.png",
     badge: "Premium",
     featured: true
   },
