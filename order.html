@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Place Order — VapeVerse</title>
+  <meta name="description" content="Place your order at VapeVerse. Fill in your details and order via form or WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💨</text></svg>">
+</head>
+<body>
+
+  <!-- ═══ Navbar ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">💨</span>
+        VAPEVERSE
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="order.html" class="active nav-cta">Order Now</a>
+      </div>
+      <div class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ Page Header ═══ -->
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span class="current">Place Order</span>
+      </div>
+      <h1>Place Your <span class="text-gradient">Order</span></h1>
+      <p>Fill in your details below — no payment required</p>
+    </div>
+  </section>
+
+  <!-- ═══ Order Section ═══ -->
+  <section class="order-section">
+    <div class="container">
+      <div class="order-layout">
+        <!-- Order Form -->
+        <div class="order-form-card">
+          <h2 class="form-title">📦 Order Details</h2>
+          <p class="form-subtitle">Complete the form and submit via form or WhatsApp</p>
+
+          <form id="orderForm" novalidate>
+            <!-- Name -->
+            <div class="form-group">
+              <label for="fullName">Full Name <span class="required">*</span></label>
+              <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+              <div class="form-error" id="fullNameError">Please enter your name</div>
+            </div>
+
+            <!-- Phone & Email -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone" class="form-control" placeholder="+92 300 1234567" required>
+                <div class="form-error" id="phoneError">Please enter your phone number</div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-control" placeholder="you@example.com">
+                <div class="form-error" id="emailError">Please enter a valid email</div>
+              </div>
+            </div>
+
+            <!-- Product & Quantity -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="product">Product <span class="required">*</span></label>
+                <select id="product" class="form-control" required>
+                  <option value="">Select a product</option>
+                  <!-- Populated by JS -->
+                </select>
+                <div class="form-error" id="productError">Please select a product</div>
+              </div>
+              <div class="form-group">
+                <label for="quantity">Quantity <span class="required">*</span></label>
+                <input type="number" id="quantity" class="form-control" min="1" value="1" required>
+                <div class="form-error" id="quantityError">Quantity must be at least 1</div>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group">
+              <label for="address">Delivery Address <span class="required">*</span></label>
+              <textarea id="address" class="form-control" placeholder="Enter your full delivery address" required></textarea>
+              <div class="form-error" id="addressError">Please enter your delivery address</div>
+            </div>
+
+            <!-- Notes -->
+            <div class="form-group">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" class="form-control" placeholder="Any special requests or instructions (optional)" style="min-height: 70px;"></textarea>
+            </div>
+
+            <!-- Actions -->
+            <div class="order-actions">
+              <button type="submit" class="btn btn-primary">✅ Submit Order</button>
+              <button type="button" class="btn btn-whatsapp" id="whatsappBtn">💬 Order via WhatsApp</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="order-summary-card">
+          <h3 class="summary-title">📋 Order Summary</h3>
+          <!-- Product Preview -->
+          <div id="productPreview" class="product-preview" style="display:none;">
+            <div class="product-preview-image">
+              <img id="previewImage" src="" alt="Product">
+            </div>
+            <div class="product-preview-info">
+              <h4 id="previewName" class="preview-name"></h4>
+              <span id="previewCategory" class="preview-category"></span>
+              <p id="previewDescription" class="preview-desc"></p>
+              <span id="previewBadge" class="preview-badge"></span>
+            </div>
+          </div>
+          <div id="summaryContent">
+            <div class="summary-item">
+              <span class="summary-item-label">Product</span>
+              <span class="summary-item-value" id="summaryProduct">—</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-item-label">Category</span>
+              <span class="summary-item-value" id="summaryCategory">—</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-item-label">Unit Price</span>
+              <span class="summary-item-value" id="summaryPrice">—</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-item-label">Quantity</span>
+              <span class="summary-item-value" id="summaryQuantity">1</span>
+            </div>
+            <div class="summary-total">
+              <span class="summary-total-label">Total</span>
+              <span class="summary-total-value" id="summaryTotal">Rs. 0</span>
+            </div>
+          </div>
+
+          <div style="margin-top: 32px; padding: 20px; background: rgba(123,47,247,0.08); border: 1px solid rgba(123,47,247,0.15); border-radius: var(--radius-md);">
+            <h4 style="font-size: 0.9rem; margin-bottom: 8px; color: var(--accent-light);">💡 How It Works</h4>
+            <ul style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.8; padding-left: 16px; list-style: disc;">
+              <li>Fill in the order form with your details</li>
+              <li>Choose <strong>Submit Order</strong> to confirm via form</li>
+              <li>Or choose <strong>WhatsApp</strong> to send details directly</li>
+              <li>No payment required — pay on delivery</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Success Modal ═══ -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal">
+      <div class="modal-icon">✅</div>
+      <h3>Order Submitted!</h3>
+      <p id="modalMessage">Your order has been received. We'll contact you shortly to confirm the details.</p>
+      <div class="modal-actions">
+        <a href="index.html" class="btn btn-secondary btn-sm">Back to Home</a>
+        <button class="btn btn-primary btn-sm" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">
+            <span class="logo-icon">💨</span>
+            VAPEVERSE
+          </div>
+          <p>Your premium destination for the finest vape products. Quality, style, and satisfaction — delivered.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="products.html?category=disposable">Disposable Vapes</a>
+          <a href="products.html?category=juice">Vape Juices</a>
+          <a href="products.html?category=device">Devices</a>
+          <a href="products.html?category=accessory">Accessories</a>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="products.html">All Products</a>
+          <a href="order.html">Place Order</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="https://wa.me/?text=Hi%20VapeVerse!" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:info@vapeverse.com">Email Us</a>
+          <a href="#">FAQ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 VapeVerse. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" title="Instagram">📷</a>
+          <a href="#" title="Twitter">🐦</a>
+          <a href="#" title="WhatsApp" rel="noopener">💬</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/order.js"></script>
+</body>
+</html>
